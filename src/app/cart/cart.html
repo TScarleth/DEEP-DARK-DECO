@@ -1,0 +1,130 @@
+<app-navbar></app-navbar>
+
+<main class="cart-shell">
+  <header class="page-heading">
+    <p class="breadcrumb">Tienda > Carrito de compras</p>
+    <h1 class="category-title">CARRITO</h1>
+  </header>
+
+  <section class="cart-layout">
+    <article class="cart-panel">
+      <div class="cart-panel-header">
+        <h2>Productos seleccionados</h2>
+        <span><strong>{{ cart.cartCount() }}</strong> items</span>
+      </div>
+
+      <div class="cart-items">
+        @if (cart.cartItems().length === 0) {
+          <p class="cart-empty">Tu carrito esta vacio.</p>
+        }
+
+        @for (item of cart.cartItems(); track item.nombre; let index = $index) {
+          <article class="cart-item">
+            <img [src]="item.imagen" [alt]="item.nombre" />
+            <div>
+              <h3>{{ item.nombre }}</h3>
+              <p>{{ item.categoria }}</p>
+              <strong>{{ item.precio }}</strong>
+            </div>
+            <div class="cart-quantity">
+              <button type="button" (click)="modify('minus', index)">-</button>
+              <span>{{ item.cantidad }}</span>
+              <button type="button" (click)="modify('plus', index)">+</button>
+            </div>
+            <button class="cart-remove" type="button" (click)="modify('remove', index)">Quitar</button>
+          </article>
+        }
+      </div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <strong>{{ cart.formatearPrecio(cart.cartTotal()) }}</strong>
+      </div>
+    </article>
+
+    <article class="cart-panel">
+      <h2>Datos de venta dummy</h2>
+      <form class="checkout-form" [formGroup]="checkoutForm" (ngSubmit)="submitCheckout()" (keyup)="onFormKeyup($event)">
+        <label>
+          Nombre del cliente
+          <input
+            type="text"
+            formControlName="checkoutNombre"
+            maxlength="60"
+            [class.is-invalid]="isInvalid('checkoutNombre')"
+          />
+          <span class="text-danger">{{ getError('checkoutNombre') }}</span>
+        </label>
+
+        <label>
+          Correo
+          <input
+            type="email"
+            formControlName="checkoutCorreo"
+            maxlength="60"
+            [class.is-invalid]="isInvalid('checkoutCorreo')"
+          />
+          <span class="text-danger">{{ getError('checkoutCorreo') }}</span>
+        </label>
+
+        <label>
+          Telefono
+          <input
+            type="tel"
+            formControlName="checkoutTelefono"
+            maxlength="20"
+            [class.is-invalid]="isInvalid('checkoutTelefono')"
+          />
+          <span class="text-danger">{{ getError('checkoutTelefono') }}</span>
+        </label>
+
+        <label>
+          Direccion de despacho
+          <input
+            type="text"
+            formControlName="checkoutDireccion"
+            maxlength="120"
+            [class.is-invalid]="isInvalid('checkoutDireccion')"
+          />
+          <span class="text-danger">{{ getError('checkoutDireccion') }}</span>
+        </label>
+
+        <label>
+          Ciudad / comuna
+          <input
+            type="text"
+            formControlName="checkoutCiudad"
+            maxlength="60"
+            [class.is-invalid]="isInvalid('checkoutCiudad')"
+          />
+          <span class="text-danger">{{ getError('checkoutCiudad') }}</span>
+        </label>
+
+        <label>
+          Metodo de pago
+          <select formControlName="checkoutPago" [class.is-invalid]="isInvalid('checkoutPago')">
+            <option value="">Seleccionar</option>
+            <option value="Tarjeta dummy">Tarjeta dummy</option>
+            <option value="Transferencia demo">Transferencia demo</option>
+            <option value="Pago contra entrega">Pago contra entrega</option>
+          </select>
+          <span class="text-danger">{{ getError('checkoutPago') }}</span>
+        </label>
+
+        <label>
+          Comentarios
+          <textarea
+            formControlName="checkoutNotas"
+            maxlength="180"
+            placeholder="Indicaciones opcionales"
+          ></textarea>
+        </label>
+
+        <button type="submit">CONFIRMAR VENTA DUMMY</button>
+        <p class="checkout-message">{{ checkoutMessage }}</p>
+      </form>
+    </article>
+  </section>
+</main>
+
+<app-footer></app-footer>

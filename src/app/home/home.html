@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div class="top-section">
+  <section class="mystery-craft">
+    <div class="mystery-card">
+      <h2>MISTERY & CRAFT</h2>
+      <p>Esculpe tu santuario desde las profundidades</p>
+
+      <button type="button" (click)="goToRegister($event)">¿No tienes una cuenta? registrate para más!</button>
+
+      @if (auth.currentUser(); as user) {
+        <div id="usuarioInfo">Bienvenida/o: {{ user.nombre }} ({{ user.rol }})</div>
+      }
+    </div>
+  </section>
+
+  <section class="lookbooks">
+    <h2>LOOKBOOKS DE</h2>
+    <h2>INSPIRACION</h2>
+
+    <div class="lookbooks-grid">
+      @for (lookbook of lookbooks; track lookbook.slug) {
+        <a class="lookbook-item" [routerLink]="['/products', lookbook.slug]">
+          <img [src]="lookbook.lookbookImage" [alt]="lookbook.title" />
+          <span>{{ lookbook.title }}</span>
+        </a>
+      }
+    </div>
+  </section>
+</div>
+
+<section class="featured-products">
+  <h2>DECORACION DESTACADA</h2>
+
+  <div class="products-grid">
+    @for (product of featuredProducts; track product.nombre) {
+      <div class="product-card">
+        <img [src]="product.imagen" [alt]="product.nombre" />
+        <h3>{{ product.nombre }}</h3>
+        <p class="price">{{ product.precio }}</p>
+        <a [routerLink]="['/products', product.categorySlug]" class="product-btn">VER CATEGORÍA</a>
+      </div>
+    }
+  </div>
+</section>
+
+<app-footer></app-footer>

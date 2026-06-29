@@ -1,0 +1,37 @@
+<div class="auth-page">
+  <div class="auth-panel">
+    <h3>Recuperar contraseña</h3>
+
+    <form [formGroup]="recoverForm" (ngSubmit)="submit()" novalidate>
+      <div class="auth-field">
+        <label for="correoRecuperar">Correo</label>
+        <input
+          type="email"
+          class="auth-input"
+          id="correoRecuperar"
+          formControlName="correo"
+          autocomplete="username"
+          maxlength="60"
+          (input)="onCorreoInput($event)"
+          (change)="onCorreoInput($event)"
+          [class.is-invalid]="isInvalid()"
+        />
+        <div class="auth-error">{{ getError() }}</div>
+      </div>
+
+      @if (errorMessage) {
+        <div class="auth-alert auth-alert--error">{{ errorMessage }}</div>
+      }
+
+      @if (successMessage) {
+        <div class="auth-alert auth-alert--success">{{ successMessage }}</div>
+      }
+
+      <button type="submit" class="product-btn auth-submit">Enviar enlace</button>
+    </form>
+
+    <div class="auth-links">
+      <a routerLink="/login">Volver al login</a>
+    </div>
+  </div>
+</div>

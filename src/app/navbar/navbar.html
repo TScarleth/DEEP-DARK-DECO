@@ -1,0 +1,121 @@
+<header class="site-header">
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="/assets/The-Warden-HEAD-.png" alt="Warden" class="logo-img" />
+      <h1 class="logo">Deep Dark Deco</h1>
+    </div>
+
+    <ul class="menu">
+      <li><a routerLink="/">HOME</a></li>
+      <li><a routerLink="/products/salon">SHOP</a></li>
+      <li><a routerLink="/cart">CARRITO</a></li>
+      <li><a href="#">ABOUT</a></li>
+      @if (auth.isAdmin()) {
+        <li class="admin-nav-item" style="display: list-item">
+          <a routerLink="/admin">ADMIN</a>
+        </li>
+      }
+    </ul>
+
+    <div class="icons">
+      <button
+        type="button"
+        class="icon-btn"
+        aria-label="Abrir menú de navegación"
+        [attr.aria-expanded]="menuOpen()"
+        (click)="toggleMenu($event)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-square-menu-icon lucide-square-menu">
+          <rect width="18" height="18" x="3" y="3" rx="2" />
+          <path d="M7 8h10" />
+          <path d="M7 12h10" />
+          <path d="M7 16h10" />
+        </svg>
+      </button>
+
+      <a routerLink="/profile" class="icon-btn" title="Mi perfil" aria-label="Mi perfil">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+      </a>
+
+      <a routerLink="/cart" class="icon-btn" title="Carrito" aria-label="Carrito">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+        </svg>
+        @if (cart.cartCount() > 0) {
+          <span class="cart-badge" style="display: flex">{{ cart.cartCount() }}</span>
+        }
+      </a>
+    </div>
+  </nav>
+
+  @if (menuOpen()) {
+    <button type="button" class="nav-menu-backdrop" aria-label="Cerrar menú" (click)="closeMenu()"></button>
+
+    <aside class="nav-menu-panel" aria-label="Menu de navegacion">
+      <div class="nav-menu-header">
+        <h2>MENU</h2>
+        <button type="button" class="nav-menu-close" aria-label="Cerrar menú" (click)="closeMenu()">×</button>
+      </div>
+
+      <section class="nav-menu-section">
+        <p class="nav-menu-label">¿Dónde estoy?</p>
+        <p class="nav-menu-current">{{ currentLocation() }}</p>
+      </section>
+
+      <section class="nav-menu-section">
+        <p class="nav-menu-label">Recorre nuestra tienda</p>
+        <nav class="nav-menu-links">
+          <a routerLink="/" (click)="closeMenu()">Inicio</a>
+          @for (category of categories; track category.slug) {
+            <a [routerLink]="['/products', category.slug]" (click)="closeMenu()">{{ category.title }}</a>
+          }
+          <a routerLink="/cart" (click)="closeMenu()">Carrito</a>
+          <a routerLink="/profile" (click)="closeMenu()">Mi perfil</a>
+          @if (auth.isLoggedIn() && !auth.isAdmin()) {
+            <a routerLink="/profile" fragment="mis-compras" (click)="closeMenu()" class="nav-menu-link-with-icon">
+              Mis compras
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-shopping-basket-icon lucide-shopping-basket" aria-hidden="true">
+                <path d="m15 11-1 9" />
+                <path d="m19 11-4-7" />
+                <path d="M2 11h20" />
+                <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
+                <path d="M4.5 15.5h15" />
+                <path d="m5 11 4-7" />
+                <path d="m9 11 1 9" />
+              </svg>
+            </a>
+          }
+          @if (auth.isAdmin()) {
+            <a routerLink="/admin" (click)="closeMenu()">Panel admin</a>
+          }
+        </nav>
+      </section>
+
+      <section class="nav-menu-section">
+        <p class="nav-menu-label">Cuenta</p>
+        @if (auth.isLoggedIn()) {
+          @if (auth.currentUser(); as user) {
+            <p class="nav-menu-user">Sesión: {{ user.nombre }} ({{ user.rol }})</p>
+          }
+          <button type="button" class="nav-menu-action" (click)="logout()">Cerrar sesión</button>
+        } @else {
+          <nav class="nav-menu-links">
+            <a routerLink="/login" (click)="closeMenu()">Iniciar sesión</a>
+            <a routerLink="/register" (click)="closeMenu()">Registrarse</a>
+          </nav>
+        }
+      </section>
+    </aside>
+  }
+</header>

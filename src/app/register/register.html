@@ -1,0 +1,92 @@
+<div class="auth-page">
+  <div class="auth-panel auth-panel--wide">
+    <h3>Registro de Usuario</h3>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" (keyup)="onFormKeyup($event)" novalidate>
+      <div class="auth-field">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          class="auth-input"
+          id="nombre"
+          formControlName="nombre"
+          maxlength="40"
+          (input)="onFieldInput('nombre', $event)"
+          [class.is-invalid]="isInvalid('nombre')"
+        />
+        <div class="auth-error">{{ getError('nombre') }}</div>
+      </div>
+
+      <div class="auth-field">
+        <label for="correoRegistro">Correo</label>
+        <input
+          type="email"
+          class="auth-input"
+          id="correoRegistro"
+          formControlName="correo"
+          autocomplete="username"
+          maxlength="60"
+          (input)="onFieldInput('correo', $event)"
+          [class.is-invalid]="isInvalid('correo')"
+        />
+        <div class="auth-error">{{ getError('correo') }}</div>
+      </div>
+
+      <div class="auth-field">
+        <label for="passwordRegistro">Contraseña</label>
+        <input
+          type="password"
+          class="auth-input"
+          id="passwordRegistro"
+          formControlName="password"
+          autocomplete="new-password"
+          maxlength="18"
+          (input)="onFieldInput('password', $event)"
+          [class.is-invalid]="isInvalid('password')"
+        />
+        <div class="auth-error">{{ getError('password') }}</div>
+      </div>
+
+      <div class="auth-field">
+        <label for="confirmarPassword">Confirmar contraseña</label>
+        <input
+          type="password"
+          class="auth-input"
+          id="confirmarPassword"
+          formControlName="confirmar"
+          autocomplete="new-password"
+          maxlength="18"
+          (input)="onFieldInput('confirmar', $event)"
+          [class.is-invalid]="isInvalid('confirmar')"
+        />
+        <div class="auth-error">{{ getError('confirmar') }}</div>
+      </div>
+
+      <div class="auth-field">
+        <label for="rol">Tipo de usuario</label>
+        <select
+          class="auth-input auth-select"
+          id="rol"
+          formControlName="rol"
+          (change)="onRolChange($event)"
+          [class.is-invalid]="isInvalid('rol')"
+        >
+          <option value="">Seleccione</option>
+          <option value="cliente">Cliente</option>
+          <option value="admin">Administrador</option>
+        </select>
+        <div class="auth-error">{{ getError('rol') }}</div>
+      </div>
+
+      @if (successMessage) {
+        <div class="auth-alert auth-alert--success">{{ successMessage }}</div>
+      }
+
+      <button type="submit" class="product-btn auth-submit">Registrarse</button>
+    </form>
+
+    <div class="auth-links">
+      <a routerLink="/login">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,200 @@
+<app-navbar></app-navbar>
+
+<div class="auth-page auth-page--profile">
+  <div class="profile-layout">
+    <aside class="auth-panel profile-preview">
+      <h3>Mi perfil</h3>
+
+      <div class="profile-preview-body">
+        <div class="profile-preview-row">
+          <span class="profile-preview-label">Nombre</span>
+          <span class="profile-preview-value">
+            {{ profileForm.controls.nombre.value || '—' }}
+          </span>
+        </div>
+
+        <div class="profile-preview-row">
+          <span class="profile-preview-label">Correo</span>
+          <span class="profile-preview-value">
+            {{ profileForm.controls.correo.value || '—' }}
+          </span>
+        </div>
+
+        <div class="profile-preview-row">
+          <span class="profile-preview-label">Teléfono</span>
+          <span
+            class="profile-preview-value"
+            [class.profile-preview-value--muted]="!profileForm.controls.telefono.value"
+          >
+            {{ profileForm.controls.telefono.value || 'No indicado' }}
+          </span>
+        </div>
+
+        <div class="profile-preview-row">
+          <span class="profile-preview-label">Dirección</span>
+          <span
+            class="profile-preview-value"
+            [class.profile-preview-value--muted]="!profileForm.controls.direccion.value"
+          >
+            {{ profileForm.controls.direccion.value || 'No indicada' }}
+          </span>
+        </div>
+
+        <div class="profile-preview-row">
+          <span class="profile-preview-label">Tipo de cuenta</span>
+          <span class="profile-preview-value">{{ rolLabel() }}</span>
+        </div>
+
+        <div class="profile-preview-row">
+          <span class="profile-preview-label">Contraseña</span>
+          <span
+            class="profile-preview-value"
+            [class.profile-preview-value--muted]="!profileForm.controls.password.value"
+          >
+            {{ passwordPreview() }}
+          </span>
+        </div>
+
+        @if (isCliente()) {
+          <div class="profile-preview-row profile-preview-row--purchases" id="mis-compras">
+            <span class="profile-preview-label profile-preview-label--with-icon">
+              Mis compras
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-shopping-basket-icon lucide-shopping-basket" aria-hidden="true">
+                <path d="m15 11-1 9" />
+                <path d="m19 11-4-7" />
+                <path d="M2 11h20" />
+                <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
+                <path d="M4.5 15.5h15" />
+                <path d="m5 11 4-7" />
+                <path d="m9 11 1 9" />
+              </svg>
+            </span>
+
+            @if (myPurchases().length === 0) {
+              <span class="profile-preview-value profile-preview-value--muted">
+                Sin compras registradas
+              </span>
+            } @else {
+              <div class="profile-preview-purchases">
+                @for (compra of myPurchases(); track compra.fecha + compra.total) {
+                  <div class="profile-preview-purchase-item">
+                    <p class="profile-preview-purchase-top">
+                      <strong>{{ compra.total }}</strong>
+                      <span>{{ compra.fecha }}</span>
+                    </p>
+                    <p class="profile-preview-purchase-meta">
+                      {{ compra.metodoPago }} · {{ compra.direccion }}
+                    </p>
+                    <ul class="profile-preview-purchase-products">
+                      @for (producto of compra.productos; track producto.nombre) {
+                        <li>{{ producto.nombre }} x{{ producto.cantidad }} · {{ producto.precio }}</li>
+                      }
+                    </ul>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </aside>
+
+    <div class="auth-panel auth-panel--wide profile-form-panel">
+      <h3>Modificar Perfil</h3>
+
+      <form [formGroup]="profileForm" (ngSubmit)="submit()" (keyup)="onFormKeyup($event)" novalidate>
+        <div class="auth-field">
+          <label for="perfilNombre">Nombre de usuario</label>
+          <input
+            type="text"
+            class="auth-input"
+            id="perfilNombre"
+            formControlName="nombre"
+            maxlength="40"
+            (input)="onFieldInput('nombre', $event)"
+            [class.is-invalid]="isInvalid('nombre')"
+          />
+          <div class="auth-error">{{ getError('nombre') }}</div>
+        </div>
+
+        <div class="auth-field">
+          <label for="perfilCorreo">Correo</label>
+          <input
+            type="email"
+            class="auth-input"
+            id="perfilCorreo"
+            formControlName="correo"
+            autocomplete="username"
+            maxlength="60"
+            (input)="onFieldInput('correo', $event)"
+            [class.is-invalid]="isInvalid('correo')"
+          />
+          <div class="auth-error">{{ getError('correo') }}</div>
+        </div>
+
+        <div class="auth-field">
+          <label for="perfilTelefono">Teléfono</label>
+          <input
+            type="tel"
+            class="auth-input"
+            id="perfilTelefono"
+            formControlName="telefono"
+            maxlength="20"
+            (input)="onFieldInput('telefono', $event)"
+            [class.is-invalid]="isInvalid('telefono')"
+          />
+          <div class="auth-error">{{ getError('telefono') }}</div>
+        </div>
+
+        <div class="auth-field">
+          <label for="perfilDireccion">Dirección</label>
+          <input
+            type="text"
+            class="auth-input"
+            id="perfilDireccion"
+            formControlName="direccion"
+            maxlength="120"
+            (input)="onFieldInput('direccion', $event)"
+            [class.is-invalid]="isInvalid('direccion')"
+          />
+          <div class="auth-error">{{ getError('direccion') }}</div>
+        </div>
+
+        <div class="auth-field">
+          <label for="perfilPassword">Nueva contraseña (opcional)</label>
+          <input
+            type="password"
+            class="auth-input"
+            id="perfilPassword"
+            formControlName="password"
+            autocomplete="new-password"
+            maxlength="18"
+            placeholder="Dejar vacío para mantener la actual"
+            (input)="onFieldInput('password', $event)"
+            [class.is-invalid]="isInvalid('password')"
+          />
+          <div class="auth-error">{{ getError('password') }}</div>
+        </div>
+
+        @if (errorMessage) {
+          <div class="auth-alert auth-alert--error">{{ errorMessage }}</div>
+        }
+
+        @if (successMessage) {
+          <div class="auth-alert auth-alert--success">{{ successMessage }}</div>
+        }
+
+        <button type="submit" class="product-btn auth-submit">Guardar cambios</button>
+      </form>
+
+      <div class="auth-links">
+        <a routerLink="/">Volver al inicio</a> |
+        <button type="button" class="auth-link-btn" (click)="logout()">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

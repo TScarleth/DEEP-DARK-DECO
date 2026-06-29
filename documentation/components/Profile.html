@@ -1,0 +1,1436 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Deep Dark Deco</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Deep Dark Deco</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Profile</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/profile/profile.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-profile</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
+                                <code><a href="../components/Navbar.html" target="_self" >Navbar</a></code>
+                                <code><a href="../components/Footer.html" target="_self" >Footer</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./profile.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#currentUser" >currentUser</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#fb" >fb</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#profileForm" >profileForm</a>
+                            </li>
+                            <li>
+                                <a href="#successMessage" >successMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getError" >getError</a>
+                            </li>
+                            <li>
+                                <a href="#isInvalid" >isInvalid</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadCurrentUser" >loadCurrentUser</a>
+                            </li>
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#onFieldInput" >onFieldInput</a>
+                            </li>
+                            <li>
+                                <a href="#onFormKeyup" >onFormKeyup</a>
+                            </li>
+                            <li>
+                                <a href="#passwordPreview" >passwordPreview</a>
+                            </li>
+                            <li>
+                                <a href="#rolLabel" >rolLabel</a>
+                            </li>
+                            <li>
+                                <a href="#submit" >submit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/profile/profile.ts:37</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getError"></a>
+                    <span class="name">
+                        <span ><b>getError</b></span>
+                        <a href="#getError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getError(field: "nombre" | "correo" | "telefono" | "direccion" | "password")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/profile/profile.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>field</td>
+                                            <td>
+                                                        <code>&quot;nombre&quot; | &quot;correo&quot; | &quot;telefono&quot; | &quot;direccion&quot; | &quot;password&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isInvalid"></a>
+                    <span class="name">
+                        <span ><b>isInvalid</b></span>
+                        <a href="#isInvalid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isInvalid(field: "nombre" | "correo" | "telefono" | "direccion" | "password")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/profile/profile.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>field</td>
+                                            <td>
+                                                        <code>&quot;nombre&quot; | &quot;correo&quot; | &quot;telefono&quot; | &quot;direccion&quot; | &quot;password&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadCurrentUser"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadCurrentUser</b></span>
+                        <a href="#loadCurrentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadCurrentUser()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/profile/profile.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/profile/profile.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFieldInput"></a>
+                    <span class="name">
+                        <span ><b>onFieldInput</b></span>
+                        <a href="#onFieldInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFieldInput(field: "nombre" | "correo" | "telefono" | "direccion" | "password", event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/profile/profile.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>field</td>
+                                            <td>
+                                                        <code>&quot;nombre&quot; | &quot;correo&quot; | &quot;telefono&quot; | &quot;direccion&quot; | &quot;password&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFormKeyup"></a>
+                    <span class="name">
+                        <span ><b>onFormKeyup</b></span>
+                        <a href="#onFormKeyup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFormKeyup(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/profile/profile.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>KeyboardEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordPreview"></a>
+                    <span class="name">
+                        <span ><b>passwordPreview</b></span>
+                        <a href="#passwordPreview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>passwordPreview()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/profile/profile.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rolLabel"></a>
+                    <span class="name">
+                        <span ><b>rolLabel</b></span>
+                        <a href="#rolLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>rolLabel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/profile/profile.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submit"></a>
+                    <span class="name">
+                        <span ><b>submit</b></span>
+                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/profile/profile.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/profile/profile.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUser"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>currentUser</b></span>
+                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.auth.currentUser</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/profile/profile.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/profile/profile.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fb"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>fb</b></span>
+                        <a href="#fb"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/profile/profile.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profileForm"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>profileForm</b></span>
+                        <a href="#profileForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.fb.nonNullable.group({
+    nombre: [&#x27;&#x27;, [Validators.required, nombreValidator()]],
+    correo: [&#x27;&#x27;, [Validators.required, Validators.maxLength(60), correoValidator()]],
+    telefono: [&#x27;&#x27;, Validators.maxLength(20)],
+    direccion: [&#x27;&#x27;, Validators.maxLength(120)],
+    password: [&#x27;&#x27;, Validators.maxLength(18)],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/profile/profile.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="successMessage"></a>
+                    <span class="name">
+                        <span ><b>successMessage</b></span>
+                        <a href="#successMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/profile/profile.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject } from &#x27;@angular/core&#x27;;
+import { FormBuilder, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+
+import { Footer } from &#x27;../footer/footer&#x27;;
+import { Navbar } from &#x27;../navbar/navbar&#x27;;
+import { AuthService } from &#x27;../core/services/auth.service&#x27;;
+import {
+  correoValidator,
+  isControlInvalid,
+  nombreValidator,
+  passwordValidator,
+  validatorMessage,
+} from &#x27;../core/validators/app.validators&#x27;;
+
+@Component({
+  selector: &#x27;app-profile&#x27;,
+  standalone: true,
+  imports: [ReactiveFormsModule, RouterLink, Navbar, Footer],
+  templateUrl: &#x27;./profile.html&#x27;,
+})
+export class Profile {
+  private readonly fb &#x3D; inject(FormBuilder);
+  private readonly auth &#x3D; inject(AuthService);
+
+  readonly currentUser &#x3D; this.auth.currentUser;
+
+  successMessage &#x3D; &#x27;&#x27;;
+  errorMessage &#x3D; &#x27;&#x27;;
+
+  readonly profileForm &#x3D; this.fb.nonNullable.group({
+    nombre: [&#x27;&#x27;, [Validators.required, nombreValidator()]],
+    correo: [&#x27;&#x27;, [Validators.required, Validators.maxLength(60), correoValidator()]],
+    telefono: [&#x27;&#x27;, Validators.maxLength(20)],
+    direccion: [&#x27;&#x27;, Validators.maxLength(120)],
+    password: [&#x27;&#x27;, Validators.maxLength(18)],
+  });
+
+  constructor() {
+    this.loadCurrentUser();
+  }
+
+  private loadCurrentUser(): void {
+    const user &#x3D; this.auth.currentUser();
+    if (!user) return;
+
+    this.profileForm.patchValue({
+      nombre: user.nombre,
+      correo: user.correo,
+      telefono: user.telefono ?? &#x27;&#x27;,
+      direccion: user.direccion ?? &#x27;&#x27;,
+      password: &#x27;&#x27;,
+    });
+  }
+
+  onFieldInput(
+    field: &#x27;nombre&#x27; | &#x27;correo&#x27; | &#x27;telefono&#x27; | &#x27;direccion&#x27; | &#x27;password&#x27;,
+    event: Event,
+  ): void {
+    const value &#x3D; (event.target as HTMLInputElement).value;
+    this.profileForm.controls[field].setValue(value);
+    this.errorMessage &#x3D; &#x27;&#x27;;
+    this.successMessage &#x3D; &#x27;&#x27;;
+  }
+
+  onFormKeyup(event: KeyboardEvent): void {
+    if (event.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27;) {
+      this.submit();
+    }
+  }
+
+  submit(): void {
+    this.errorMessage &#x3D; &#x27;&#x27;;
+    this.successMessage &#x3D; &#x27;&#x27;;
+
+    const password &#x3D; this.profileForm.controls.password.value.trim();
+    if (!password) {
+      this.profileForm.controls.password.clearValidators();
+      this.profileForm.controls.password.setValidators([Validators.maxLength(18)]);
+    } else {
+      this.profileForm.controls.password.setValidators([
+        Validators.maxLength(18),
+        passwordValidator(),
+      ]);
+    }
+    this.profileForm.controls.password.updateValueAndValidity();
+
+    if (this.profileForm.invalid) {
+      this.profileForm.markAllAsTouched();
+      return;
+    }
+
+    const form &#x3D; this.profileForm.getRawValue();
+    const error &#x3D; this.auth.updateProfile({
+      nombre: form.nombre,
+      correo: form.correo,
+      telefono: form.telefono,
+      direccion: form.direccion,
+      password: password || undefined,
+    });
+
+    if (error) {
+      this.errorMessage &#x3D; error;
+      return;
+    }
+
+    this.loadCurrentUser();
+    this.successMessage &#x3D; &#x27;Perfil actualizado correctamente.&#x27;;
+    this.profileForm.controls.password.setValue(&#x27;&#x27;);
+  }
+
+  logout(): void {
+    this.auth.logout();
+  }
+
+  rolLabel(): string {
+    const rol &#x3D; this.currentUser()?.rol;
+
+    if (rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;) return &#x27;Administrador&#x27;;
+    if (rol &#x3D;&#x3D;&#x3D; &#x27;cliente&#x27;) return &#x27;Cliente&#x27;;
+    return &#x27;—&#x27;;
+  }
+
+  passwordPreview(): string {
+    const value &#x3D; this.profileForm.controls.password.value;
+
+    if (!value) return &#x27;Sin cambios&#x27;;
+
+    return &#x27;•&#x27;.repeat(Math.min(value.length, 12));
+  }
+
+  isInvalid(
+    field: &#x27;nombre&#x27; | &#x27;correo&#x27; | &#x27;telefono&#x27; | &#x27;direccion&#x27; | &#x27;password&#x27;,
+  ): boolean {
+    return isControlInvalid(this.profileForm.get(field));
+  }
+
+  getError(
+    field: &#x27;nombre&#x27; | &#x27;correo&#x27; | &#x27;telefono&#x27; | &#x27;direccion&#x27; | &#x27;password&#x27;,
+  ): string {
+    const control &#x3D; this.profileForm.get(field);
+
+    if (field &#x3D;&#x3D;&#x3D; &#x27;telefono&#x27; &amp;&amp; control?.errors?.[&#x27;maxlength&#x27;]) {
+      return &#x27;Teléfono máximo 20 caracteres&#x27;;
+    }
+
+    if (field &#x3D;&#x3D;&#x3D; &#x27;direccion&#x27; &amp;&amp; control?.errors?.[&#x27;maxlength&#x27;]) {
+      return &#x27;Dirección máximo 120 caracteres&#x27;;
+    }
+
+    if (field &#x3D;&#x3D;&#x3D; &#x27;password&#x27; &amp;&amp; !control?.value) {
+      return &#x27;&#x27;;
+    }
+
+    if (field &#x3D;&#x3D;&#x3D; &#x27;telefono&#x27; || field &#x3D;&#x3D;&#x3D; &#x27;direccion&#x27;) {
+      return &#x27;&#x27;;
+    }
+
+    return validatorMessage(control, field &#x3D;&#x3D;&#x3D; &#x27;password&#x27; ? &#x27;password&#x27; : field);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-navbar&gt;&lt;/app-navbar&gt;
+
+&lt;div class&#x3D;&quot;auth-page auth-page--profile&quot;&gt;
+  &lt;div class&#x3D;&quot;profile-layout&quot;&gt;
+    &lt;aside class&#x3D;&quot;auth-panel profile-preview&quot;&gt;
+      &lt;h3&gt;Mi perfil&lt;/h3&gt;
+
+      &lt;div class&#x3D;&quot;profile-preview-body&quot;&gt;
+        &lt;div class&#x3D;&quot;profile-preview-row&quot;&gt;
+          &lt;span class&#x3D;&quot;profile-preview-label&quot;&gt;Nombre&lt;/span&gt;
+          &lt;span class&#x3D;&quot;profile-preview-value&quot;&gt;
+            {{ profileForm.controls.nombre.value || &#x27;—&#x27; }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;profile-preview-row&quot;&gt;
+          &lt;span class&#x3D;&quot;profile-preview-label&quot;&gt;Correo&lt;/span&gt;
+          &lt;span class&#x3D;&quot;profile-preview-value&quot;&gt;
+            {{ profileForm.controls.correo.value || &#x27;—&#x27; }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;profile-preview-row&quot;&gt;
+          &lt;span class&#x3D;&quot;profile-preview-label&quot;&gt;Teléfono&lt;/span&gt;
+          &lt;span
+            class&#x3D;&quot;profile-preview-value&quot;
+            [class.profile-preview-value--muted]&#x3D;&quot;!profileForm.controls.telefono.value&quot;
+          &gt;
+            {{ profileForm.controls.telefono.value || &#x27;No indicado&#x27; }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;profile-preview-row&quot;&gt;
+          &lt;span class&#x3D;&quot;profile-preview-label&quot;&gt;Dirección&lt;/span&gt;
+          &lt;span
+            class&#x3D;&quot;profile-preview-value&quot;
+            [class.profile-preview-value--muted]&#x3D;&quot;!profileForm.controls.direccion.value&quot;
+          &gt;
+            {{ profileForm.controls.direccion.value || &#x27;No indicada&#x27; }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;profile-preview-row&quot;&gt;
+          &lt;span class&#x3D;&quot;profile-preview-label&quot;&gt;Tipo de cuenta&lt;/span&gt;
+          &lt;span class&#x3D;&quot;profile-preview-value&quot;&gt;{{ rolLabel() }}&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;profile-preview-row&quot;&gt;
+          &lt;span class&#x3D;&quot;profile-preview-label&quot;&gt;Contraseña&lt;/span&gt;
+          &lt;span
+            class&#x3D;&quot;profile-preview-value&quot;
+            [class.profile-preview-value--muted]&#x3D;&quot;!profileForm.controls.password.value&quot;
+          &gt;
+            {{ passwordPreview() }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/aside&gt;
+
+    &lt;div class&#x3D;&quot;auth-panel auth-panel--wide profile-form-panel&quot;&gt;
+      &lt;h3&gt;Modificar Perfil&lt;/h3&gt;
+
+      &lt;form [formGroup]&#x3D;&quot;profileForm&quot; (ngSubmit)&#x3D;&quot;submit()&quot; (keyup)&#x3D;&quot;onFormKeyup($event)&quot; novalidate&gt;
+        &lt;div class&#x3D;&quot;auth-field&quot;&gt;
+          &lt;label for&#x3D;&quot;perfilNombre&quot;&gt;Nombre de usuario&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;text&quot;
+            class&#x3D;&quot;auth-input&quot;
+            id&#x3D;&quot;perfilNombre&quot;
+            formControlName&#x3D;&quot;nombre&quot;
+            maxlength&#x3D;&quot;40&quot;
+            (input)&#x3D;&quot;onFieldInput(&#x27;nombre&#x27;, $event)&quot;
+            [class.is-invalid]&#x3D;&quot;isInvalid(&#x27;nombre&#x27;)&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;auth-error&quot;&gt;{{ getError(&#x27;nombre&#x27;) }}&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;auth-field&quot;&gt;
+          &lt;label for&#x3D;&quot;perfilCorreo&quot;&gt;Correo&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;email&quot;
+            class&#x3D;&quot;auth-input&quot;
+            id&#x3D;&quot;perfilCorreo&quot;
+            formControlName&#x3D;&quot;correo&quot;
+            autocomplete&#x3D;&quot;username&quot;
+            maxlength&#x3D;&quot;60&quot;
+            (input)&#x3D;&quot;onFieldInput(&#x27;correo&#x27;, $event)&quot;
+            [class.is-invalid]&#x3D;&quot;isInvalid(&#x27;correo&#x27;)&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;auth-error&quot;&gt;{{ getError(&#x27;correo&#x27;) }}&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;auth-field&quot;&gt;
+          &lt;label for&#x3D;&quot;perfilTelefono&quot;&gt;Teléfono&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;tel&quot;
+            class&#x3D;&quot;auth-input&quot;
+            id&#x3D;&quot;perfilTelefono&quot;
+            formControlName&#x3D;&quot;telefono&quot;
+            maxlength&#x3D;&quot;20&quot;
+            (input)&#x3D;&quot;onFieldInput(&#x27;telefono&#x27;, $event)&quot;
+            [class.is-invalid]&#x3D;&quot;isInvalid(&#x27;telefono&#x27;)&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;auth-error&quot;&gt;{{ getError(&#x27;telefono&#x27;) }}&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;auth-field&quot;&gt;
+          &lt;label for&#x3D;&quot;perfilDireccion&quot;&gt;Dirección&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;text&quot;
+            class&#x3D;&quot;auth-input&quot;
+            id&#x3D;&quot;perfilDireccion&quot;
+            formControlName&#x3D;&quot;direccion&quot;
+            maxlength&#x3D;&quot;120&quot;
+            (input)&#x3D;&quot;onFieldInput(&#x27;direccion&#x27;, $event)&quot;
+            [class.is-invalid]&#x3D;&quot;isInvalid(&#x27;direccion&#x27;)&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;auth-error&quot;&gt;{{ getError(&#x27;direccion&#x27;) }}&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;auth-field&quot;&gt;
+          &lt;label for&#x3D;&quot;perfilPassword&quot;&gt;Nueva contraseña (opcional)&lt;/label&gt;
+          &lt;input
+            type&#x3D;&quot;password&quot;
+            class&#x3D;&quot;auth-input&quot;
+            id&#x3D;&quot;perfilPassword&quot;
+            formControlName&#x3D;&quot;password&quot;
+            autocomplete&#x3D;&quot;new-password&quot;
+            maxlength&#x3D;&quot;18&quot;
+            placeholder&#x3D;&quot;Dejar vacío para mantener la actual&quot;
+            (input)&#x3D;&quot;onFieldInput(&#x27;password&#x27;, $event)&quot;
+            [class.is-invalid]&#x3D;&quot;isInvalid(&#x27;password&#x27;)&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;auth-error&quot;&gt;{{ getError(&#x27;password&#x27;) }}&lt;/div&gt;
+        &lt;/div&gt;
+
+        @if (errorMessage) {
+          &lt;div class&#x3D;&quot;auth-alert auth-alert--error&quot;&gt;{{ errorMessage }}&lt;/div&gt;
+        }
+
+        @if (successMessage) {
+          &lt;div class&#x3D;&quot;auth-alert auth-alert--success&quot;&gt;{{ successMessage }}&lt;/div&gt;
+        }
+
+        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;product-btn auth-submit&quot;&gt;Guardar cambios&lt;/button&gt;
+      &lt;/form&gt;
+
+      &lt;div class&#x3D;&quot;auth-links&quot;&gt;
+        &lt;a routerLink&#x3D;&quot;/&quot;&gt;Volver al inicio&lt;/a&gt; |
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;auth-link-btn&quot; (click)&#x3D;&quot;logout()&quot;&gt;Cerrar sesión&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;app-footer&gt;&lt;/app-footer&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-navbar></app-navbar><div class="auth-page auth-page--profile">  <div class="profile-layout">    <aside class="auth-panel profile-preview">      <h3>Mi perfil</h3>      <div class="profile-preview-body">        <div class="profile-preview-row">          <span class="profile-preview-label">Nombre</span>          <span class="profile-preview-value">            {{ profileForm.controls.nombre.value || \'—\' }}          </span>        </div>        <div class="profile-preview-row">          <span class="profile-preview-label">Correo</span>          <span class="profile-preview-value">            {{ profileForm.controls.correo.value || \'—\' }}          </span>        </div>        <div class="profile-preview-row">          <span class="profile-preview-label">Teléfono</span>          <span            class="profile-preview-value"            [class.profile-preview-value--muted]="!profileForm.controls.telefono.value"          >            {{ profileForm.controls.telefono.value || \'No indicado\' }}          </span>        </div>        <div class="profile-preview-row">          <span class="profile-preview-label">Dirección</span>          <span            class="profile-preview-value"            [class.profile-preview-value--muted]="!profileForm.controls.direccion.value"          >            {{ profileForm.controls.direccion.value || \'No indicada\' }}          </span>        </div>        <div class="profile-preview-row">          <span class="profile-preview-label">Tipo de cuenta</span>          <span class="profile-preview-value">{{ rolLabel() }}</span>        </div>        <div class="profile-preview-row">          <span class="profile-preview-label">Contraseña</span>          <span            class="profile-preview-value"            [class.profile-preview-value--muted]="!profileForm.controls.password.value"          >            {{ passwordPreview() }}          </span>        </div>      </div>    </aside>    <div class="auth-panel auth-panel--wide profile-form-panel">      <h3>Modificar Perfil</h3>      <form [formGroup]="profileForm" (ngSubmit)="submit()" (keyup)="onFormKeyup($event)" novalidate>        <div class="auth-field">          <label for="perfilNombre">Nombre de usuario</label>          <input            type="text"            class="auth-input"            id="perfilNombre"            formControlName="nombre"            maxlength="40"            (input)="onFieldInput(\'nombre\', $event)"            [class.is-invalid]="isInvalid(\'nombre\')"          />          <div class="auth-error">{{ getError(\'nombre\') }}</div>        </div>        <div class="auth-field">          <label for="perfilCorreo">Correo</label>          <input            type="email"            class="auth-input"            id="perfilCorreo"            formControlName="correo"            autocomplete="username"            maxlength="60"            (input)="onFieldInput(\'correo\', $event)"            [class.is-invalid]="isInvalid(\'correo\')"          />          <div class="auth-error">{{ getError(\'correo\') }}</div>        </div>        <div class="auth-field">          <label for="perfilTelefono">Teléfono</label>          <input            type="tel"            class="auth-input"            id="perfilTelefono"            formControlName="telefono"            maxlength="20"            (input)="onFieldInput(\'telefono\', $event)"            [class.is-invalid]="isInvalid(\'telefono\')"          />          <div class="auth-error">{{ getError(\'telefono\') }}</div>        </div>        <div class="auth-field">          <label for="perfilDireccion">Dirección</label>          <input            type="text"            class="auth-input"            id="perfilDireccion"            formControlName="direccion"            maxlength="120"            (input)="onFieldInput(\'direccion\', $event)"            [class.is-invalid]="isInvalid(\'direccion\')"          />          <div class="auth-error">{{ getError(\'direccion\') }}</div>        </div>        <div class="auth-field">          <label for="perfilPassword">Nueva contraseña (opcional)</label>          <input            type="password"            class="auth-input"            id="perfilPassword"            formControlName="password"            autocomplete="new-password"            maxlength="18"            placeholder="Dejar vacío para mantener la actual"            (input)="onFieldInput(\'password\', $event)"            [class.is-invalid]="isInvalid(\'password\')"          />          <div class="auth-error">{{ getError(\'password\') }}</div>        </div>        @if (errorMessage) {          <div class="auth-alert auth-alert--error">{{ errorMessage }}</div>        }        @if (successMessage) {          <div class="auth-alert auth-alert--success">{{ successMessage }}</div>        }        <button type="submit" class="product-btn auth-submit">Guardar cambios</button>      </form>      <div class="auth-links">        <a routerLink="/">Volver al inicio</a> |        <button type="button" class="auth-link-btn" (click)="logout()">Cerrar sesión</button>      </div>    </div>  </div></div><app-footer></app-footer></div>'
+    var COMPONENTS = [{'name': 'Admin', 'selector': 'app-admin'},{'name': 'App', 'selector': 'app-root'},{'name': 'Cart', 'selector': 'app-cart'},{'name': 'CategoryProducts', 'selector': 'app-category-products'},{'name': 'Footer', 'selector': 'app-footer'},{'name': 'Home', 'selector': 'app-home'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Profile', 'selector': 'app-profile'},{'name': 'Recover', 'selector': 'app-recover'},{'name': 'Register', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Profile'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Profile.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

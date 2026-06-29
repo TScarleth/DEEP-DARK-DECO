@@ -1,0 +1,146 @@
+<app-navbar></app-navbar>
+
+<main class="admin-shell">
+  <header class="page-heading">
+    <p class="breadcrumb">Panel administrador > Deep Dark Deco</p>
+    <h1 class="category-title">ADMIN</h1>
+  </header>
+
+  <section class="admin-hero">
+    <div>
+      <h2>Panel de control</h2>
+      <p>Sesión activa: <span>{{ auth.currentUser()?.nombre }}</span></p>
+    </div>
+    <a routerLink="/" class="product-btn">VOLVER A LA TIENDA</a>
+  </section>
+
+  <section class="admin-stats">
+    <article class="admin-stat">
+      <span>{{ admin.stats().usuarios }}</span>
+      <p>Usuarios registrados</p>
+    </article>
+    <article class="admin-stat">
+      <span>{{ admin.stats().productos }}</span>
+      <p>Productos administrados</p>
+    </article>
+    <article class="admin-stat">
+      <span>{{ admin.stats().stock }}</span>
+      <p>Unidades en inventario</p>
+    </article>
+    <article class="admin-stat">
+      <span>{{ admin.stats().compras }}</span>
+      <p>Compras monitoreadas</p>
+    </article>
+  </section>
+
+  <section class="admin-grid">
+    <article class="admin-panel">
+      <h2>Mantenedor de productos</h2>
+      <form class="admin-form" [formGroup]="productForm" (ngSubmit)="submitProduct()" (keyup)="onFormKeyup($event)">
+        <input
+          type="text"
+          formControlName="productoNombre"
+          placeholder="Nombre del producto"
+          maxlength="60"
+          [class.is-invalid]="isInvalid('productoNombre')"
+        />
+        <select formControlName="productoCategoria" [class.is-invalid]="isInvalid('productoCategoria')">
+          <option value="">Categoría</option>
+          <option value="Dormitorio">Dormitorio</option>
+          <option value="Salon">Salón</option>
+          <option value="Estudio">Estudio</option>
+          <option value="Rincon">Rincon</option>
+        </select>
+        <input
+          type="number"
+          formControlName="productoStock"
+          placeholder="Stock"
+          min="0"
+          max="999"
+          [class.is-invalid]="isInvalid('productoStock')"
+        />
+        <input
+          type="number"
+          formControlName="productoPrecio"
+          placeholder="Precio"
+          min="1"
+          [class.is-invalid]="isInvalid('productoPrecio')"
+        />
+        <button type="submit">AGREGAR PRODUCTO</button>
+      </form>
+    </article>
+
+    <article class="admin-panel">
+      <h2>Monitoreo de compras</h2>
+      <div class="admin-purchases">
+        @if (admin.getRecentPurchases().length === 0) {
+          <p>No hay compras dummy registradas todavia.</p>
+        }
+        @for (compra of admin.getRecentPurchases(); track compra.fecha + compra.cliente) {
+          <p>
+            <strong>{{ compra.cliente }}</strong> - {{ compra.total }} - {{ compra.metodoPago }} -
+            {{ compra.fecha }}
+          </p>
+        }
+      </div>
+    </article>
+  </section>
+
+  <section class="admin-table-panel">
+    <h2>Usuarios registrados</h2>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (usuario of admin.getUsers(); track usuario.correo) {
+            <tr>
+              <td>{{ usuario.nombre }}</td>
+              <td>{{ usuario.correo }}</td>
+              <td>{{ usuario.rol }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="admin-table-panel">
+    <h2>Inventario de productos</h2>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (producto of admin.getProducts(); track producto.id) {
+            <tr>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.categoria }}</td>
+              <td>{{ producto.stock }}</td>
+              <td>{{ producto.precio }}</td>
+              <td>
+                <button type="button" class="admin-delete-btn" (click)="deleteProduct(producto.nombre)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

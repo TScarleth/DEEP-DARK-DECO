@@ -1,0 +1,837 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Deep Dark Deco</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Deep Dark Deco</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#adminGuard" title="src/app/core/guards/auth.guard.ts" ><b>adminGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authGuard" title="src/app/core/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CATEGORIES" title="src/app/core/data/products.data.ts" ><b>CATEGORIES</b>&nbsp;&nbsp;&nbsp;(src/.../products.data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FEATURED_PRODUCTS" title="src/app/core/data/products.data.ts" ><b>FEATURED_PRODUCTS</b>&nbsp;&nbsp;&nbsp;(src/.../products.data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#guestGuard" title="src/app/core/guards/auth.guard.ts" ><b>guestGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LIMITES" title="src/app/core/services/validation.service.ts" ><b>LIMITES</b>&nbsp;&nbsp;&nbsp;(src/.../validation.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PRODUCTS" title="src/app/core/data/products.data.ts" ><b>PRODUCTS</b>&nbsp;&nbsp;&nbsp;(src/.../products.data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="src/app/app.routes.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(src/.../app.routes.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/core/guards/auth.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="adminGuard"></a>
+                    <span class="name">
+                        <span ><b>adminGuard</b></span>
+                        <a href="#adminGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  const auth &#x3D; inject(AuthService);
+  const router &#x3D; inject(Router);
+
+  if (auth.isLoggedIn() &amp;&amp; auth.isAdmin()) {
+    return true;
+  }
+
+  return router.createUrlTree([auth.isLoggedIn() ? &#x27;/&#x27; : &#x27;/login&#x27;]);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Restringe el panel admin a usuarios con rol administrador.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authGuard"></a>
+                    <span class="name">
+                        <span ><b>authGuard</b></span>
+                        <a href="#authGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  const auth &#x3D; inject(AuthService);
+  const router &#x3D; inject(Router);
+
+  if (auth.isLoggedIn()) {
+    return true;
+  }
+
+  return router.createUrlTree([&#x27;/login&#x27;]);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Protege rutas privadas. Redirige a login si no hay sesion activa.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guestGuard"></a>
+                    <span class="name">
+                        <span ><b>guestGuard</b></span>
+                        <a href="#guestGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  const auth &#x3D; inject(AuthService);
+  const router &#x3D; inject(Router);
+
+  if (!auth.isLoggedIn()) {
+    return true;
+  }
+
+  return router.createUrlTree([&#x27;/&#x27;]);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Evita que un usuario autenticado entre a login, registro o recuperar contraseña.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/App.html" target="_self" >ApplicationConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+  ],
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/data/products.data.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CATEGORIES"></a>
+                    <span class="name">
+                        <span ><b>CATEGORIES</b></span>
+                        <a href="#CATEGORIES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CategoryInfo.html" target="_self" >CategoryInfo[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    slug: &#x27;dormitorio&#x27;,
+    title: &#x27;DORMITORIO&#x27;,
+    breadcrumb: &#x27;Categorías &gt; Dormitorio &gt; Colección Mystery &amp; Craft&#x27;,
+    lookbookImage: &#x27;/assets/eldormitorio.png&#x27;,
+  },
+  {
+    slug: &#x27;salon&#x27;,
+    title: &#x27;SALON&#x27;,
+    breadcrumb: &#x27;Categorías &gt; Salón &gt; Colección Mystery &amp; Craft&#x27;,
+    lookbookImage: &#x27;/assets/elsalon.png&#x27;,
+  },
+  {
+    slug: &#x27;estudio&#x27;,
+    title: &#x27;ESTUDIO&#x27;,
+    breadcrumb: &#x27;Categorías &gt; Estudio &gt; Colección Mystery &amp; Craft&#x27;,
+    lookbookImage: &#x27;/assets/elestudio.png&#x27;,
+  },
+  {
+    slug: &#x27;rincon&#x27;,
+    title: &#x27;RINCON&#x27;,
+    breadcrumb: &#x27;Categorías &gt; Rincon &gt; Colección Mystery &amp; Craft&#x27;,
+    lookbookImage: &#x27;/assets/elrincon.png&#x27;,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FEATURED_PRODUCTS"></a>
+                    <span class="name">
+                        <span ><b>FEATURED_PRODUCTS</b></span>
+                        <a href="#FEATURED_PRODUCTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FeaturedProduct[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    nombre: &#x27;LÁMPARA DE GEODA Y AMATISTA CRISTALINA&#x27;,
+    precio: &#x27;$39.990&#x27;,
+    imagen: &#x27;/assets/lampara de geoda.png&#x27;,
+    categorySlug: &#x27;dormitorio&#x27;,
+  },
+  {
+    nombre: &#x27;VELAS AROMÁTICAS DE SCULK&#x27;,
+    precio: &#x27;$19.990&#x27;,
+    imagen: &#x27;/assets/velas.png&#x27;,
+    categorySlug: &#x27;rincon&#x27;,
+  },
+  {
+    nombre: &#x27;RELOJ INTEGRADO CON SCULK&#x27;,
+    precio: &#x27;$28.990&#x27;,
+    imagen: &#x27;/assets/catalizador de tiempo integrado con sculk.png&#x27;,
+    categorySlug: &#x27;salon&#x27;,
+  },
+  {
+    nombre: &#x27;TEXTIL COLGANTE DE CABEZA DEL WARDEN&#x27;,
+    precio: &#x27;$59.990&#x27;,
+    imagen: &#x27;/assets/textil de Cuerno del warden.png&#x27;,
+    categorySlug: &#x27;estudio&#x27;,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PRODUCTS"></a>
+                    <span class="name">
+                        <span ><b>PRODUCTS</b></span>
+                        <a href="#PRODUCTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Product.html" target="_self" >Product[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: &#x27;dorm-1&#x27;,
+    nombre: &#x27;ALFOMBRA &quot;VENAS DE SCULK”&#x27;,
+    categoria: &#x27;Dormitorio&#x27;,
+    categoriaSlug: &#x27;dormitorio&#x27;,
+    descripcion:
+      &#x27;Alfombra de diseño orgánico y místico inspirada en el ecosistema del Warden, con textura en diferentes niveles y flecos artesanales en los extremos laterales.&#x27;,
+    oldPrice: &#x27;$99.990&#x27;,
+    precio: &#x27;$69.990&#x27;,
+    imagen: &#x27;/assets/alfombradormitorio.png&#x27;,
+    stock: 10,
+  },
+  {
+    id: &#x27;dorm-2&#x27;,
+    nombre: &#x27;LÁMPARA DE GEODA Y AMATISTA CRISTALINA&#x27;,
+    categoria: &#x27;Dormitorio&#x27;,
+    categoriaSlug: &#x27;dormitorio&#x27;,
+    descripcion:
+      &#x27;Lámpara decorativa con cristales luminosos en tonos azules y morados con una base oscura inspirada en la corteza de Pizarra profunda.&#x27;,
+    precio: &#x27;$39.990&#x27;,
+    imagen: &#x27;/assets/lampara de geoda.png&#x27;,
+    stock: 12,
+  },
+  {
+    id: &#x27;dorm-3&#x27;,
+    nombre: &#x27;CAMA &quot;RESGUARDO DEL WARDEN&quot;&#x27;,
+    categoria: &#x27;Dormitorio&#x27;,
+    categoriaSlug: &#x27;dormitorio&#x27;,
+    descripcion:
+      &#x27;Cama matrimonial con una estructura Monolítica de pizarra y venas de Sculk Bioluminiscentes incrustadas.Incluye cobertor de terciopelo esmeralda y sábanas negras.&#x27;,
+    oldPrice: &#x27;$3.799.990&#x27;,
+    precio: &#x27;$3.299.990&#x27;,
+    imagen: &#x27;/assets/camadormitorio.png&#x27;,
+    stock: 3,
+  },
+  {
+    id: &#x27;dorm-4&#x27;,
+    nombre: &#x27;CORTINAS &quot;VELO DEL ABISMO&quot;&#x27;,
+    categoria: &#x27;Dormitorio&#x27;,
+    categoriaSlug: &#x27;dormitorio&#x27;,
+    descripcion:
+      &#x27;Cortinas de diseño conceptual que simulan la vegetación de la DEEP DARK,contiene un bordado tridimencional de Sculk, detalles de minerales suspendidos y una tela Blackout de alta densidad.&#x27;,
+    precio: &#x27;$229.990&#x27;,
+    imagen: &#x27;/assets/cortinasdormitorio.png&#x27;,
+    stock: 7,
+  },
+  {
+    id: &#x27;salon-1&#x27;,
+    nombre: &#x27;MESA “ECO DE SCULK”&#x27;,
+    categoria: &#x27;Salon&#x27;,
+    categoriaSlug: &#x27;salon&#x27;,
+    descripcion:
+      &#x27;Esta innovadora mesa de centro, de diseño conceptual y geométrico, contiene bloques de piedra oscura, geometría en niveles, superficie de cristal e iluminación en tonos turquesa.&#x27;,
+    oldPrice: &#x27;$899.990&#x27;,
+    precio: &#x27;$799.990&#x27;,
+    imagen: &#x27;/assets/mesabajasalon.png&#x27;,
+    stock: 5,
+  },
+  {
+    id: &#x27;salon-2&#x27;,
+    nombre: &#x27;SILLÓN “ABISMO VELVET”&#x27;,
+    categoria: &#x27;Salon&#x27;,
+    categoriaSlug: &#x27;salon&#x27;,
+    descripcion:
+      &#x27;Sillón esmeralda con estética maximalista y lujosa, con una silueta cúbica, tapiz de terciopelo y un acolchado capitoné.&#x27;,
+    precio: &#x27;$369.990&#x27;,
+    imagen: &#x27;/assets/sillonsalon.png&#x27;,
+    stock: 8,
+  },
+  {
+    id: &#x27;salon-3&#x27;,
+    nombre: &#x27;RELOJ INTEGRADO CON SCULK&#x27;,
+    categoria: &#x27;Salon&#x27;,
+    categoriaSlug: &#x27;salon&#x27;,
+    descripcion:
+      &#x27;Reloj de pared con diseño minimalista, una “infección” de sculk asimétrica, efecto de eclipse y retroiluminación cian.&#x27;,
+    oldPrice: &#x27;$28.990&#x27;,
+    precio: &#x27;$18.990&#x27;,
+    imagen: &#x27;/assets/catalizador de tiempo integrado con sculk.png&#x27;,
+    stock: 8,
+  },
+  {
+    id: &#x27;salon-4&#x27;,
+    nombre: &#x27;MESA “PEDESTAL DE LA CIUDAD ANTIGUA”&#x27;,
+    categoria: &#x27;Salon&#x27;,
+    categoriaSlug: &#x27;salon&#x27;,
+    descripcion:
+      &#x27;Mesa alta de cóctel con una silueta monolítica y esbelta, textura de pizarra profunda y diseño de pilares huecos.&#x27;,
+    precio: &#x27;$89.999&#x27;,
+    imagen: &#x27;/assets/mesaaltasalon.png&#x27;,
+    stock: 9,
+  },
+  {
+    id: &#x27;est-1&#x27;,
+    nombre: &#x27;PANELES ACÚSTICOS DE SENSOR DE SCULK&#x27;,
+    categoria: &#x27;Estudio&#x27;,
+    categoriaSlug: &#x27;estudio&#x27;,
+    descripcion:
+      &#x27;Paneles decoractivos tipo cuadros,diseñados con una matriz simétrica una textura de pizarra profunda pulida y patrones en bajo relieve.&#x27;,
+    oldPrice: &#x27;$229.990&#x27;,
+    precio: &#x27;$199.990&#x27;,
+    imagen: &#x27;/assets/panelesestudio.png&#x27;,
+    stock: 11,
+  },
+  {
+    id: &#x27;est-2&#x27;,
+    nombre: &#x27;TEXTIL COLGANTE DE LA CABEZA DEL WARDEN&#x27;,
+    categoria: &#x27;Estudio&#x27;,
+    categoriaSlug: &#x27;estudio&#x27;,
+    descripcion:
+      &#x27;Este tapiz textil colgante es una pieza rústica y artesanal de nuestra colección DEEP DARK,tejido en telar y con Macramé.Diseñada especialmente para decorar la pared de tu estudio.&#x27;,
+    precio: &#x27;$59.990&#x27;,
+    imagen: &#x27;/assets/textil de Cuerno del warden.png&#x27;,
+    stock: 6,
+  },
+  {
+    id: &#x27;est-3&#x27;,
+    nombre: &#x27;SILLA &quot;TRONO DEL ARCHIVERO ANCESTRAL&quot;&#x27;,
+    categoria: &#x27;Estudio&#x27;,
+    categoriaSlug: &#x27;estudio&#x27;,
+    descripcion:
+      &#x27;Silla presidencial de escritorio que fusiona la sostificación de una biblioteca clásica con la atmósfera profunda y ejecutiva del universo del Warden.Contiene una base de madera de roble y un acolchado Capitoné profundo.&#x27;,
+    oldPrice: &#x27;$289.990&#x27;,
+    precio: &#x27;$229.990&#x27;,
+    imagen: &#x27;/assets/sillaestudio.png&#x27;,
+    stock: 5,
+  },
+  {
+    id: &#x27;est-4&#x27;,
+    nombre: &#x27;ESCRITORIO &quot;RAÍZ ANCENTRAL&quot;&#x27;,
+    categoria: &#x27;Estudio&#x27;,
+    categoriaSlug: &#x27;estudio&#x27;,
+    descripcion:
+      &#x27;Escritorio ejecutivo con un diseño de doble pedestal Monolítico.Su madera es de Raíz de roble Vateada diseñado para ser una superficie de trabajo espaciosa.&#x27;,
+    precio: &#x27;$1.859.990&#x27;,
+    imagen: &#x27;/assets/escritorioestudio.png&#x27;,
+    stock: 4,
+  },
+  {
+    id: &#x27;rin-1&#x27;,
+    nombre: &#x27;JARRÓN &quot;RELIQUIA DE LA CIUDAD ANTIGUA”&#x27;,
+    categoria: &#x27;Rincon&#x27;,
+    categoriaSlug: &#x27;rincon&#x27;,
+    descripcion:
+      &#x27;Jarrón ornamental de diseño arqueológico con corrisión por Sculk Bioliminiscente y crecimiento de Amatista. Contiene iluminación cian y musgo sintético.&#x27;,
+    oldPrice: &#x27;$89.990&#x27;,
+    precio: &#x27;$79.990&#x27;,
+    imagen: &#x27;/assets/jarronrincon.png&#x27;,
+    stock: 10,
+  },
+  {
+    id: &#x27;rin-2&#x27;,
+    nombre: &#x27;VELAS AROMÁTICAS DE SCULK&#x27;,
+    categoria: &#x27;Rincon&#x27;,
+    categoriaSlug: &#x27;rincon&#x27;,
+    descripcion:
+      &#x27;Set de velas aromáticas con olor BLUEBERRY y notas de eucalipto frío.El cuerpo de las velas tienen un acabado rugoso,poroso y de color gris oscuro mate.&#x27;,
+    precio: &#x27;$19.990&#x27;,
+    imagen: &#x27;/assets/velas.png&#x27;,
+    stock: 24,
+  },
+  {
+    id: &#x27;rin-3&#x27;,
+    nombre: &#x27;LÁMPARARA &quot;SENSORES DEL GUARDIÁN&quot;&#x27;,
+    categoria: &#x27;Rincon&#x27;,
+    categoriaSlug: &#x27;rincon&#x27;,
+    descripcion:
+      &#x27;Lámpara de rincón estilo Tótem.Contiene un ojo central de Sculk, una corona de cuernos del Warden y brotes de cristales de amatista, con una iluminación ideal para rincones.&#x27;,
+    oldPrice: &#x27;$189.990&#x27;,
+    precio: &#x27;$149.990&#x27;,
+    imagen: &#x27;/assets/lampararincon.png&#x27;,
+    stock: 8,
+  },
+  {
+    id: &#x27;rin-4&#x27;,
+    nombre: &#x27;FUENTE &quot;MANANTIAL DEL ECO OSCURO&quot;&#x27;,
+    categoria: &#x27;Rincon&#x27;,
+    categoriaSlug: &#x27;rincon&#x27;,
+    descripcion:
+      &#x27;Fuente de agua para sobremesa ideal para los rincones de tu hogar con una arquitectura basada en los templos subterráneos de la DEEP DARK.&#x27;,
+    precio: &#x27;$169.990&#x27;,
+    imagen: &#x27;/assets/fuenterincon.png&#x27;,
+    stock: 6,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/services/validation.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LIMITES"></a>
+                    <span class="name">
+                        <span ><b>LIMITES</b></span>
+                        <a href="#LIMITES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  nombreMin: 2,
+  nombreMax: 40,
+  correoMax: 60,
+  passwordMin: 8,
+  passwordMax: 18,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Limites compartidos entre validaciones de formulario y servicios.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.routes.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/router/Routes" target="_blank" >Routes</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  { path: &#x27;&#x27;, component: Home, canActivate: [authGuard] },
+  {
+    path: &#x27;login&#x27;,
+    component: Login,
+    canActivate: [guestGuard],
+    data: { bodyClass: &#x27;category-page auth-page-body&#x27; },
+  },
+  {
+    path: &#x27;register&#x27;,
+    component: Register,
+    data: { bodyClass: &#x27;category-page auth-page-body&#x27; },
+  },
+  {
+    path: &#x27;recover&#x27;,
+    component: Recover,
+    canActivate: [guestGuard],
+    data: { bodyClass: &#x27;category-page auth-page-body&#x27; },
+  },
+  {
+    path: &#x27;profile&#x27;,
+    component: Profile,
+    canActivate: [authGuard],
+    data: { bodyClass: &#x27;category-page&#x27; },
+  },
+  {
+    path: &#x27;cart&#x27;,
+    component: Cart,
+    canActivate: [authGuard],
+    data: { bodyClass: &#x27;category-page cart-page&#x27; },
+  },
+  {
+    path: &#x27;admin&#x27;,
+    component: Admin,
+    canActivate: [adminGuard],
+    data: { bodyClass: &#x27;category-page admin-page&#x27; },
+  },
+  { path: &#x27;products&#x27;, redirectTo: &#x27;products/salon&#x27;, pathMatch: &#x27;full&#x27; },
+  {
+    path: &#x27;products/:slug&#x27;,
+    component: CategoryProducts,
+    canActivate: [authGuard],
+    data: { bodyClass: &#x27;category-page&#x27; },
+  },
+  { path: &#x27;**&#x27;, redirectTo: &#x27;&#x27; },
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rutas principales de Deep Dark Deco con guards y clases de fondo por pagina.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,5 +1,9 @@
 <app-navbar></app-navbar>
 
+@if (successMessage()) {
+  <div class="admin-toast">{{ successMessage() }}</div>
+}
+
 <main class="admin-shell">
   <header class="page-heading">
     <p class="breadcrumb">Panel administrador > Deep Dark Deco</p>
@@ -34,7 +38,7 @@
   </section>
 
   <section class="admin-grid">
-    <article class="admin-panel">
+    <article class="admin-panel" #mantenedorProductos id="mantenedor-productos">
       <h2>Mantenedor de productos</h2>
       <form class="admin-form" [formGroup]="productForm" (ngSubmit)="submitProduct()" (keyup)="onFormKeyup($event)">
         <input
@@ -51,6 +55,29 @@
           <option value="Estudio">Estudio</option>
           <option value="Rincon">Rincon</option>
         </select>
+        <textarea
+          formControlName="productoDescripcion"
+          placeholder="Descripción"
+          rows="4"
+          maxlength="500"
+          [class.is-invalid]="isInvalid('productoDescripcion')"
+        ></textarea>
+        <div class="admin-image-field">
+          <input
+            type="text"
+            formControlName="productoImagen"
+            placeholder="Ruta de imagen opcional (ej: assets/velas.png)"
+            maxlength="200"
+            [class.is-invalid]="isInvalid('productoImagen')"
+          />
+          <label class="admin-file-label">
+            Seleccionar imagen
+            <input type="file" accept="image/*" (change)="onImagenSelected($event)" />
+          </label>
+          @if (imagenPreview()) {
+            <img class="admin-image-preview" [src]="imagenPreview()" alt="Vista previa del producto" />
+          }
+        </div>
         <input
           type="number"
           formControlName="productoStock"
@@ -66,7 +93,7 @@
           min="1"
           [class.is-invalid]="isInvalid('productoPrecio')"
         />
-        <button type="submit">AGREGAR PRODUCTO</button>
+        <button type="submit">{{ productoEnEdicion() ? 'GUARDAR CAMBIOS' : 'AGREGAR PRODUCTO' }}</button>
       </form>
     </article>
 
@@ -124,16 +151,21 @@
           </tr>
         </thead>
         <tbody>
-          @for (producto of admin.getProducts(); track producto.id) {
+          @for (producto of productosApi(); track producto.id) {
             <tr>
               <td>{{ producto.nombre }}</td>
               <td>{{ producto.categoria }}</td>
               <td>{{ producto.stock }}</td>
               <td>{{ producto.precio }}</td>
               <td>
-                <button type="button" class="admin-delete-btn" (click)="deleteProduct(producto.nombre)">
-                  Eliminar
-                </button>
+                <div class="admin-table-actions">
+                  <button type="button" class="admin-delete-btn" (click)="editProduct(producto)">
+                    Actualizar
+                  </button>
+                  <button type="button" class="admin-delete-btn" (click)="deleteProduct(producto.nombre)">
+                    Eliminar
+                  </button>
+                </div>
               </td>
             </tr>
           }

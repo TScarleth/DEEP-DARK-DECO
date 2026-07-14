@@ -20,6 +20,17 @@ export class Home {
   readonly featuredProducts = this.products.getFeaturedProducts();
   readonly lookbooks = this.products.getCategories();
 
+  getCategoryLabel(categorySlug: string): string {
+    const labels: Record<string, string> = {
+      dormitorio: 'DORMITORIO',
+      rincon: 'RINCON',
+      salon: 'SALON',
+      estudio: 'ESTUDIO',
+    };
+
+    return labels[categorySlug] ?? categorySlug.toUpperCase();
+  }
+
   goToRegister(event: Event): void {
     event.preventDefault();
     this.router.navigateByUrl('/register');

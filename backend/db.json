@@ -1,0 +1,173 @@
+{
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "ALFOMBRA \"VENAS DE SCULK\"",
+      "categoria": "Dormitorio",
+      "categoriaSlug": "dormitorio",
+      "descripcion": "Alfombra de diseño orgánico y místico inspirada en el ecosistema del Warden, con textura en diferentes niveles y flecos artesanales en los extremos laterales.",
+      "precio": "$69.990",
+      "imagen": "assets/alfombradormitorio.png",
+      "stock": 50,
+      "oldPrice": "$99.990"
+    },
+    {
+      "id": "2",
+      "nombre": "LÁMPARA DE GEODA Y AMATISTA CRISTALINA",
+      "categoria": "Dormitorio",
+      "categoriaSlug": "dormitorio",
+      "descripcion": "Lámpara decorativa con cristales luminosos en tonos azules y morados con una base oscura inspirada en la corteza de Pizarra profunda.",
+      "precio": "$39.990",
+      "imagen": "assets/lampara de geoda.png",
+      "stock": 12
+    },
+    {
+      "id": "3",
+      "nombre": "CAMA \"RESGUARDO DEL WARDEN\"",
+      "categoria": "Dormitorio",
+      "categoriaSlug": "dormitorio",
+      "descripcion": "Cama matrimonial con una estructura monolítica de pizarra y venas de Sculk bioluminiscentes incrustadas. Incluye cobertor de terciopelo esmeralda y sábanas negras.",
+      "precio": "$3.299.990",
+      "oldPrice": "$3.799.990",
+      "imagen": "assets/camadormitorio.png",
+      "stock": 3
+    },
+    {
+      "id": "4",
+      "nombre": "CORTINAS \"VELO DEL ABISMO\"",
+      "categoria": "Dormitorio",
+      "categoriaSlug": "dormitorio",
+      "descripcion": "Cortinas de diseño conceptual que simulan la vegetación de la Deep Dark, contienen un bordado tridimensional de Sculk, detalles de minerales suspendidos y una tela blackout de alta densidad.",
+      "precio": "$229.990",
+      "imagen": "assets/cortinasdormitorio.png",
+      "stock": 7
+    },
+    {
+      "id": "5",
+      "nombre": "MESA \"ECO DE SCULK\"",
+      "categoria": "Salón",
+      "categoriaSlug": "salon",
+      "descripcion": "Esta innovadora mesa de centro, de diseño conceptual y geométrico, contiene bloques de piedra oscura, geometría en niveles, superficie de cristal e iluminación en tonos turquesa.",
+      "precio": "$799.990",
+      "oldPrice": "$899.990",
+      "imagen": "assets/mesabajasalon.png",
+      "stock": 5
+    },
+    {
+      "id": "6",
+      "nombre": "SILLÓN \"ABISMO VELVET\"",
+      "categoria": "Salón",
+      "categoriaSlug": "salon",
+      "descripcion": "Sillón esmeralda con estética maximalista y lujosa, con una silueta cúbica, tapiz de terciopelo y un acolchado capitoné.",
+      "precio": "$369.990",
+      "imagen": "assets/sillonsalon.png",
+      "stock": 8
+    },
+    {
+      "id": "7",
+      "nombre": "RELOJ INTEGRADO CON SCULK",
+      "categoria": "Salón",
+      "categoriaSlug": "salon",
+      "descripcion": "Reloj de pared con diseño minimalista, una infección de Sculk asimétrica, efecto de eclipse y retroiluminación cian.",
+      "precio": "$18.990",
+      "oldPrice": "$28.990",
+      "imagen": "assets/catalizador de tiempo integrado con sculk.png",
+      "stock": 8
+    },
+    {
+      "id": "8",
+      "nombre": "MESA \"PEDESTAL DE LA CIUDAD ANTIGUA\"",
+      "categoria": "Salón",
+      "categoriaSlug": "salon",
+      "descripcion": "Mesa alta de cóctel con una silueta monolítica y esbelta, textura de pizarra profunda y diseño de pilares huecos.",
+      "precio": "$89.999",
+      "imagen": "assets/mesaaltasalon.png",
+      "stock": 9
+    },
+    {
+      "id": "9",
+      "nombre": "PANELES ACÚSTICOS DE SENSOR DE SCULK",
+      "categoria": "Estudio",
+      "categoriaSlug": "estudio",
+      "descripcion": "Paneles decorativos tipo cuadros, diseñados con una matriz simétrica, una textura de pizarra profunda pulida y patrones en bajo relieve.",
+      "precio": "$199.990",
+      "oldPrice": "$229.990",
+      "imagen": "assets/panelesestudio.png",
+      "stock": 11
+    },
+    {
+      "id": "10",
+      "nombre": "TEXTIL COLGANTE DE LA CABEZA DEL WARDEN",
+      "categoria": "Estudio",
+      "categoriaSlug": "estudio",
+      "descripcion": "Este tapiz textil colgante es una pieza rústica y artesanal de nuestra colección Deep Dark, tejido en telar y con macramé. Diseñado especialmente para decorar la pared de tu estudio.",
+      "precio": "$59.990",
+      "imagen": "assets/textilestudio.png",
+      "stock": 6
+    },
+    {
+      "id": "11",
+      "nombre": "SILLA \"TRONO DEL ARCHIVERO ANCESTRAL\"",
+      "categoria": "Estudio",
+      "categoriaSlug": "estudio",
+      "descripcion": "Silla presidencial de escritorio que fusiona la sofisticación de una biblioteca clásica con la atmósfera profunda y ejecutiva del universo del Warden. Contiene una base de madera de roble y un acolchado capitoné profundo.",
+      "precio": "$229.990",
+      "oldPrice": "$289.990",
+      "imagen": "assets/sillaestudio.png",
+      "stock": 5
+    },
+    {
+      "id": "12",
+      "nombre": "ESCRITORIO \"RAÍZ ANCESTRAL\"",
+      "categoria": "Estudio",
+      "categoriaSlug": "estudio",
+      "descripcion": "Escritorio ejecutivo con un diseño de doble pedestal monolítico. Su madera es de raíz de roble veteada, diseñado para ser una superficie de trabajo espaciosa.",
+      "precio": "$1.859.990",
+      "imagen": "assets/escritorioestudio.png",
+      "stock": 4
+    },
+    {
+      "id": "13",
+      "nombre": "JARRÓN \"RELIQUIA DE LA CIUDAD ANTIGUA\"",
+      "categoria": "Rincón",
+      "categoriaSlug": "rincon",
+      "descripcion": "Jarrón ornamental de diseño arqueológico con corrosión por Sculk bioluminiscente y crecimiento de amatista. Contiene iluminación cian y musgo sintético.",
+      "precio": "$79.990",
+      "oldPrice": "$89.990",
+      "imagen": "assets/jarronrincon.png",
+      "stock": 10
+    },
+    {
+      "id": "14",
+      "nombre": "VELAS AROMÁTICAS DE SCULK",
+      "categoria": "Rincón",
+      "categoriaSlug": "rincon",
+      "descripcion": "Set de velas aromáticas con olor a blueberry y notas de eucalipto frío. El cuerpo de las velas tiene un acabado rugoso, poroso y de color gris oscuro mate.",
+      "precio": "$19.990",
+      "imagen": "assets/velas.png",
+      "stock": 24
+    },
+    {
+      "id": "15",
+      "nombre": "LÁMPARA \"SENSORES DEL GUARDIÁN\"",
+      "categoria": "Rincón",
+      "categoriaSlug": "rincon",
+      "descripcion": "Lámpara de rincón estilo tótem. Contiene un ojo central de Sculk, una corona de cuernos del Warden y brotes de cristales de amatista, con una iluminación ideal para rincones.",
+      "precio": "$149.990",
+      "oldPrice": "$189.990",
+      "imagen": "assets/lampararincon.png",
+      "stock": 8
+    },
+    {
+      "id": "16",
+      "nombre": "FUENTE \"MANANTIAL DEL ECO OSCURO\"",
+      "categoria": "Rincón",
+      "categoriaSlug": "rincon",
+      "descripcion": "Fuente de agua para sobremesa ideal para los rincones de tu hogar con una arquitectura basada en los templos subterráneos de la Deep Dark.",
+      "precio": "$169.990",
+      "imagen": "assets/fuenterincon.png",
+      "stock": 6
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

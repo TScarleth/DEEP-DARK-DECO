@@ -35,6 +35,7 @@
   <div class="products-grid">
     @for (product of featuredProducts; track product.nombre) {
       <div class="product-card">
+        <p class="product-category-label">{{ getCategoryLabel(product.categorySlug) }}</p>
         <img [src]="product.imagen" [alt]="product.nombre" />
         <h3>{{ product.nombre }}</h3>
         <p class="price">{{ product.precio }}</p>

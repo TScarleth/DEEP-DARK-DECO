@@ -877,6 +877,15 @@ body.bg-light .container {
   object-fit: cover;
 }
 
+.product-category-label {
+  margin: 0 0 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .product-card h3 {
   color: white;
 
@@ -1659,13 +1668,78 @@ app-footer {
 }
 
 .admin-form input,
-.admin-form select {
+.admin-form select,
+.admin-form textarea {
   width: 100%;
   min-width: 0;
   padding: 10px;
   border: 2px solid var(--secondary-color);
   background: rgba(255, 255, 255, 0.94);
   font-family: Arial, sans-serif;
+}
+
+.admin-form textarea,
+.admin-image-field {
+  grid-column: 1 / -1;
+}
+
+.admin-image-field {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-file-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 10px 14px;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  background: rgba(42, 157, 143, 0.18);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.admin-file-label input {
+  display: none;
+}
+
+.admin-image-preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+}
+
+.admin-toast {
+  position: fixed;
+  top: 96px;
+  left: 50%;
+  z-index: 1100;
+  transform: translateX(-50%);
+  padding: 14px 22px;
+  border-radius: 12px;
+  background: rgba(42, 157, 143, 0.95);
+  border: 2px solid var(--primary-color);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  animation: adminToastIn 0.35s ease;
+}
+
+@keyframes adminToastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .admin-form button {
@@ -1726,6 +1800,12 @@ app-footer {
   color: white;
   cursor: pointer;
   font-weight: bold;
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .admin-delete-btn:hover {
